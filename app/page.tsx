@@ -1,7 +1,10 @@
+import SectionHeading from "@/components/SectionHeading";
+
+
 export default function Home() {
   return (
     <div>
-      <h1 className="font-bold text-3xl text-center py-2">Welcome Next Salon</h1>
+      <SectionHeading eyebrow="featured shops" title="Next Salon" description="We are a team of developers who are passionate about creating beautiful and functional websites."/>
     </div>
   )
 }

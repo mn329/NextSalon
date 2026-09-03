@@ -6,6 +6,10 @@ export type Shop = {
     reviewCount: number
     tags: string[]
     description: string
+    address: string
+    phone: string
+    instagramUrl: string
+    businessHours: string[]
     coverImage: string
     leadMessage: string
 }

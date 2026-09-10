@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header"
-import ShopCard from "@/components/ShopCard";
-import { MOCK_SHOPS } from "@/data/MockData";
+
 
 
 export const metadata: Metadata = {

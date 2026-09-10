@@ -1,12 +1,11 @@
 import SectionHeading from "@/components/SectionHeading";
 import ShopCard from "@/components/ShopCard";
-import { MOCK_SHOPS } from "@/data/MockData";
+import { getShops } from "@/lib/services/shops";
 
 
 
-export default function Home() {
-  const shops = MOCK_SHOPS;
-
+export default async function Home() {
+  const shops = await getShops();
   return (
     <section>
       <SectionHeading

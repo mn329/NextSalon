@@ -1,6 +1,7 @@
 // server-onlyを使用することで、クライアントサイドでは使用できないようになる
 import "server-only"
 import type { Shop } from "@/types/shops"
+import type { Menu } from "@/types/menu";
 
 // .env で NEXT_PUBLIC_APP_URL を設定していない場合は、localhost:3000 を使用
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"
@@ -22,4 +23,19 @@ export async function getShop(id: string): Promise<Shop | null> {
   const data: { shop: Shop } = await res.json();
   // ショップデータを返す
   return data.shop;
+}
+
+export async function getMenus(shopId: string): Promise<Menu[]> {
+  const res = await fetch(`${BASE_URL}/api/shops/${shopId}/menus`, {
+    cache: "no-store",
+  });
+
+  // API が 404 → 空配列（コンポーネント側で「準備中」）
+  if (res.status === 404) return [];
+
+  if (!res.ok) throw new Error("メニューの取得に失敗しました");
+
+  const data: { menus: Menu[] } = await res.json();
+  // メニューデータを返す
+  return data.menus;
 }
